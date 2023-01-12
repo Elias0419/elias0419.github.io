@@ -2,7 +2,8 @@
 <html>
 <head>
   <script type="text/javascript">
-  let aInsert = document.getElementsByClassName('detail-bar-value')
+  (document).ready(function() {
+    let aInsert = document.getElementsByClassName('detail-bar-value')
 let newDiv = document.createElement('button');
 newDiv.innerHTML = '<span class="detail-bar-value"><button style="background: #0084ff; border: none; border-radius: 5px; padding: 8px 14px; font-size: 15px; color: #fff;"  id="button">Click</button>  </span>';
 document.body.insertBefore(newDiv, aInsert.nextSibling)
@@ -18,6 +19,7 @@ function forceSubmit() {
     //return;
   }
 }
+  }
   <!--<script type="text/javascript" src="https://raw.githubusercontent.com/Elias0419/elias0419.github.io/main/forcesubmit.js">-->
   </script>
 </head>
