@@ -36,22 +36,21 @@ div.innerHTML = '<div id="form"><button style="background: #0084ff; border: none
 document.body.appendChild(div);
 
 */
-$(function() {
-document.getElementById("button").addEventListener("click", myFunction);
-function myFunction() {
-  // document.getElementById("button").onclick = function (){
-  //alert("test");
-  var form = document.getElementsByTagName("form")[0];
-  const response = confirm("Are you sure you want to attempt to submit a broken task?");
-  if (response) {
-    console.log(form.id);
-    document.getElementById(form.id).submit();
-  } else {
-    alert("Cancel was pressed");
-    //return;
+  document.getElementById("button").addEventListener("click", myFunction);
+
+  function myFunction() {
+    // document.getElementById("button").onclick = function (){
+    //alert("test");
+    var form = document.getElementsByTagName("form")[0];
+    const response = confirm("Are you sure you want to attempt to submit a broken task?");
+    if (response) {
+      console.log(form.id);
+      document.getElementById(form.id).submit();
+    } else {
+      alert("Cancel was pressed");
+      //return;
+    }
   }
-}
-});
   </script>
 </body>
 </html>
