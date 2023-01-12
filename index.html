@@ -19,7 +19,7 @@ let newDiv = document.createElement('button');
   function forceSubmit() {
     // document.getElementById("button").onclick = function (){
     //alert("test");
-    var form = document.getElementsByTagName("form")[0];
+    let form = document.getElementsByTagName("form")[0];
     const response = confirm("Are you sure you want to attempt to submit a broken task?");
     if (response) {
       console.log(form.id);
