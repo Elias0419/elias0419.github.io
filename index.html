@@ -14,7 +14,7 @@ let newDiv = document.createElement('button');
  newDiv.innerHTML = '<span class="detail-bar-value"><button style="background: #0084ff; border: none; border-radius: 5px; padding: 8px 14px; font-size: 15px; color: #fff;"  id="button">Click</button>  </span>'; 
  document.body.insertBefore(newDiv, aInsert.nextSibling)
  document.getElementById("button").addEventListener("click", forceSubmit);
-
+console.log(aInsert);
   function forceSubmit() {
     // document.getElementById("button").onclick = function (){
     //alert("test");
