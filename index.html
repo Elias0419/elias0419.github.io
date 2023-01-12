@@ -2,13 +2,29 @@
 <html>
 <head>
   <script type="text/javascript">
-  (document).ready(function() {
-    let aInsert = document.getElementsByClassName('detail-bar-value')
+  let aInsert = document.getElementsByClassName('detail-bar-value')
 let newDiv = document.createElement('button');
 newDiv.innerHTML = '<span class="detail-bar-value"><button style="background: #0084ff; border: none; border-radius: 5px; padding: 8px 14px; font-size: 15px; color: #fff;"  id="button">Click</button>  </span>';
+/*%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
 document.body.insertBefore(newDiv, aInsert.nextSibling)
+//document.body.appendChild(newDiv)
 
-    $(function() {
+//aInsert.parentNode.insertBefore(head, aInsert.nextSibling);
+
+/*
+let sheet = document.createElement('style')
+sheet.innerHTML = "inject  { background: #0084ff; border: none; border-radius: 5px; padding: 8px 14px; font-size: 15px; color: #fff;} ";
+document.body.appendChild(sheet); 
+*/
+
+/*
+
+let div = document.createElement('button');
+div.innerHTML = '<div id="form"><button style="background: #0084ff; border: none; border-radius: 5px; padding: 8px 14px; font-size: 15px; color: #fff;"  id="button">Click</button>  </div>';
+document.body.appendChild(div);
+
+*/
+$(function() {
 document.getElementById("button").addEventListener("click", myFunction);
 function myFunction() {
   // document.getElementById("button").onclick = function (){
