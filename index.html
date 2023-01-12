@@ -1,56 +1,36 @@
 <!DOCTYPE html>
 <html>
-<head>
-  
-  
-  <!--<script type="text/javascript" src="https://raw.githubusercontent.com/Elias0419/elias0419.github.io/main/forcesubmit.js">-->
-  </script>
-</head>
-<body>
-<div>
-<span class="detail-bar-value">TEST </span>
-<!--<button id="button">Click</button>
-<div id="form">
-</div>-->
-</div>
-  <script type="text/javascript">
-  let aInsert = document.getElementsByClassName('detail-bar-value')
-let newDiv = document.createElement('button');
-newDiv.innerHTML = '<span class="detail-bar-value"><button style="background: #0084ff; border: none; border-radius: 5px; padding: 8px 14px; font-size: 15px; color: #fff;"  id="button">Click</button>  </span>';
-/*%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
-document.body.insertBefore(newDiv, aInsert.nextSibling)
-//document.body.appendChild(newDiv)
+  <head>
+    <!--<script type="text/javascript" src="https://raw.githubusercontent.com/Elias0419/elias0419.github.io/main/forcesubmit.js">-->
+    </script>
+  </head>
+  <body>
+    <div>
+      <span class="detail-bar-value">TEST </span>
+      <!--<button id="button">Click</button><div id="form"></div>-->
+    </div>
+    <script type="text/javascript">
+      let aInsert = document.getElementsByClassName('detail-bar-value')
+      let newDiv = document.createElement('button');
+      newDiv.innerHTML = ' < span class = "detail-bar-value" > < button style = "background: #0084ff; border: none; border-radius: 5px; padding: 8px 14px; font-size: 15px; color: #fff;"
+      id = "button" > Click < /button> < /span>';
+      document.body.insertBefore(newDiv, aInsert.nextSibling)
+      //document.body.appendChild(newDiv)
+      document.getElementById("button").addEventListener("click", myFunction);
 
-//aInsert.parentNode.insertBefore(head, aInsert.nextSibling);
-
-/*
-let sheet = document.createElement('style')
-sheet.innerHTML = "inject  { background: #0084ff; border: none; border-radius: 5px; padding: 8px 14px; font-size: 15px; color: #fff;} ";
-document.body.appendChild(sheet); 
-*/
-
-/*
-
-let div = document.createElement('button');
-div.innerHTML = '<div id="form"><button style="background: #0084ff; border: none; border-radius: 5px; padding: 8px 14px; font-size: 15px; color: #fff;"  id="button">Click</button>  </div>';
-document.body.appendChild(div);
-
-*/
-  document.getElementById("button").addEventListener("click", myFunction);
-
-  function myFunction() {
-    // document.getElementById("button").onclick = function (){
-    //alert("test");
-    var form = document.getElementsByTagName("form")[0];
-    const response = confirm("Are you sure you want to attempt to submit a broken task?");
-    if (response) {
-      console.log(form.id);
-      document.getElementById(form.id).submit();
-    } else {
-      alert("Cancel was pressed");
-      //return;
-    }
-  }
-  </script>
+      function myFunction() {
+        // document.getElementById("button").onclick = function (){
+        //alert("test");
+        var form = document.getElementsByTagName("form")[0];
+        const response = confirm("Are you sure you want to attempt to submit a broken task?");
+        if (response) {
+          console.log(form.id);
+          document.getElementById(form.id).submit();
+        } else {
+          alert("Cancel was pressed");
+          //return;
+        }
+      }
+    </script>
 </body>
 </html>
