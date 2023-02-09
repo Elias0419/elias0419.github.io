@@ -5,29 +5,7 @@
   </head>
   <body>
     <div>
-      <span class="detail-bar-value">TEST </span>
-      <!--<button id="button">Click</button><div id="form"></div>-->
+    
     </div>
-    <script type="text/javascript">
-let aInsert = document.getElementsByClassName('detail-bar-value')
-let newDiv = document.createElement('button');
- newDiv.innerHTML = '<span class="detail-bar-value"><button style="background: #0084ff; border: none; border-radius: 5px; padding: 8px 14px; font-size: 15px; color: #fff;"  id="button">Click</button>  </span>'; 
- document.body.insertBefore(newDiv, aInsert.nextSibling)
- document.getElementById("button").addEventListener("click", forceSubmit);
-console.log(aInsert);
-  function forceSubmit() {
-    // document.getElementById("button").onclick = function (){
-    //alert("test");
-    let form = document.getElementsByTagName("form")[0];
-    const response = confirm("Are you sure you want to attempt to submit a broken task?");
-    if (response) {
-      console.log(form.id);
-      document.getElementById(form.id).submit();
-    } else {
-      alert("Cancel was pressed");
-      //return;
-    }
-  }
-    </script>
-</body>
+
 </html>
