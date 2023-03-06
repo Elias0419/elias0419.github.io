@@ -1,4 +1,7 @@
-window.onload = init;
+window.addEventListener('load', function() {
+    main()
+})
+function main(){
 const gameContainer = document.createElement('div');
 const canvas = document.createElement('canvas');
 canvas.width = 400;
@@ -119,11 +122,11 @@ function checkFoodCollision() {
     spawnFood();
   }
 }
-function init(){
+
 let updateInterval = setInterval(() => {
   update();
 }, 100);
-}
+
 function gameOver() {
   console.log("game over")
    clearInterval(updateInterval);
@@ -186,4 +189,6 @@ function update() {
   // Draw the snake at its new position
   drawSnake();
   drawFood();
+}
+
 }
