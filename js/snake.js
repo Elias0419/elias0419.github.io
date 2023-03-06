@@ -1,3 +1,4 @@
+window.onload = init;
 const gameContainer = document.createElement('div');
 const canvas = document.createElement('canvas');
 canvas.width = 400;
