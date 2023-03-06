@@ -118,11 +118,11 @@ function checkFoodCollision() {
     spawnFood();
   }
 }
-
+function init(){
 let updateInterval = setInterval(() => {
   update();
 }, 100);
-
+}
 function gameOver() {
   console.log("game over")
    clearInterval(updateInterval);
