@@ -11,15 +11,21 @@ canvas.tabIndex = 0;
 gameContainer.id = 'game-container';
 gameContainer.appendChild(canvas);
 document.body.appendChild(gameContainer);
-const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-      if(!isMobile){ 
+
+    
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      
+    
+    if(!isMobile){ 
 canvas.width = 400;
 canvas.height = 400;}
-    const snakeSize = 10;
-    const foodSize = 10;
-if (isMobile){
-    const snakeSize = 60;
-    const foodSize = 60;
+    let snakeSize = 10;
+    let foodSize = 10;
+
+    
+    if (isMobile){
+     snakeSize = 30;
+    foodSize = 30;
     canvas.width = window.innerWidth * 0.8;;
 canvas.height = window.innerHeight * 0.4;
 const buttonDiv = document.createElement('div');
@@ -29,33 +35,40 @@ const upButton = document.createElement('button');
 upButton.textContent = '↑';
 upButton.style.width = '150px';
 upButton.style.height = '150px';
-upButton.style.fontSize = '24px';
+upButton.style.fontSize = '32px';
+    upButton.style.fontWeight = '900'
 upButton.style.margin = '10px';
 
 const downButton = document.createElement('button');
 downButton.textContent = '↓';
 downButton.style.width = '150px';
 downButton.style.height = '150px';
-downButton.style.fontSize = '24px';
+downButton.style.fontSize = '32px';
+    downButton.style.fontWeight = '900'
 downButton.style.margin = '10px';
 
 const leftButton = document.createElement('button');
 leftButton.textContent = '←';
 leftButton.style.width = '150px';
 leftButton.style.height = '150px';
-leftButton.style.fontSize = '24px';
+leftButton.style.fontSize = '32px';
+    leftButton.style.fontWeight = '900'
 leftButton.style.margin = '10px';
 
 const rightButton = document.createElement('button');
 rightButton.textContent = '→';
 rightButton.style.width = '150px';
 rightButton.style.height = '150px';
-rightButton.style.fontSize = '24px';
+rightButton.style.fontSize = '32px';
+    rightButton.style.fontWeight = '900'
 rightButton.style.margin = '10px';
-    buttonDiv.appendChild(upButton);
+    
+    
+buttonDiv.appendChild(upButton);
 buttonDiv.appendChild(downButton);
 buttonDiv.appendChild(leftButton);
 buttonDiv.appendChild(rightButton);
+    
 buttonDiv.style.display = 'flex';
 buttonDiv.style.flexDirection = 'row';
 buttonDiv.style.justifyContent = 'center';
