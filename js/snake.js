@@ -12,6 +12,48 @@ gameContainer.id = 'game-container';
 gameContainer.appendChild(canvas);
 document.body.appendChild(gameContainer);
 
+const buttonDiv = document.createElement('div');
+document.body.appendChild(buttonDiv)
+//const buttonDiv = document.querySelector('#game-container');
+const upButton = document.createElement('button');
+upButton.textContent = '↑';
+upButton.style.width = '80px';
+upButton.style.height = '80px';
+upButton.style.fontSize = '24px';
+upButton.style.margin = '10px';
+
+const downButton = document.createElement('button');
+downButton.textContent = '↓';
+downButton.style.width = '80px';
+downButton.style.height = '80px';
+downButton.style.fontSize = '24px';
+downButton.style.margin = '10px';
+
+const leftButton = document.createElement('button');
+leftButton.textContent = '←';
+leftButton.style.width = '80px';
+leftButton.style.height = '80px';
+leftButton.style.fontSize = '24px';
+leftButton.style.margin = '10px';
+
+const rightButton = document.createElement('button');
+rightButton.textContent = '→';
+rightButton.style.width = '80px';
+rightButton.style.height = '80px';
+rightButton.style.fontSize = '24px';
+rightButton.style.margin = '10px';
+    buttonDiv.appendChild(upButton);
+buttonDiv.appendChild(downButton);
+buttonDiv.appendChild(leftButton);
+buttonDiv.appendChild(rightButton);
+buttonDiv.style.display = 'flex';
+buttonDiv.style.flexDirection = 'row';
+buttonDiv.style.justifyContent = 'center';
+buttonDiv.style.alignItems = 'center';
+buttonDiv.style.position = 'absolute';
+buttonDiv.style.bottom = '0';
+buttonDiv.style.width = '100%';
+
 const style = document.createElement('style');
 style.innerHTML = `
   body {
@@ -40,6 +82,26 @@ const snakeSize = 10;
 let snakeLength = 3;
 
 let snake = [  { x: 50, y: 50 },  { x: 40, y: 50 },  { x: 30, y: 50 },];
+
+    upButton.addEventListener('click', function() {
+  dx = 0;
+  dy = -10;
+});
+
+downButton.addEventListener('click', function() {
+  dx = 0;
+  dy = 10;
+});
+
+leftButton.addEventListener('click', function() {
+  dx = -10;
+  dy = 0;
+});
+
+rightButton.addEventListener('click', function() {
+  dx = 10;
+  dy = 0;
+});
 
 const KEY_LEFT = 37;
 const KEY_UP = 38;
@@ -73,6 +135,8 @@ document.addEventListener('keydown', (event) => {
       break;
   }
 });
+
+
 
 function drawSnake() {
   const ctx = canvas.getContext('2d');
@@ -192,3 +256,4 @@ function update() {
 }
 
 }
+
