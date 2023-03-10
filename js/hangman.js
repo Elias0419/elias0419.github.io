@@ -29,18 +29,6 @@ function main(word) {
     guessesDisplay.innerHTML = "Guess a letter to begin";
     document.body.appendChild(guessesDisplay);
     
-    // Create the image container element
-    var imageContainer = document.createElement("div");
-    imageContainer.id = "image-container";
-    imageContainer.style.width = "150px";
-    imageContainer.style.height = "150px";
-    imageContainer.style.float = "right";
-    imageContainer.style.backgroundImage = "url('http://example.com/hangman1.jpg')";
-    imageContainer.style.backgroundSize = "contain";
-    imageContainer.style.backgroundRepeat = "no-repeat";
-    imageContainer.style.backgroundPosition = "center";
-    document.body.appendChild(imageContainer);
-    
     // Create the letter button container element
     var buttonContainer = document.createElement("div");
     buttonContainer.id = "buttons";
@@ -99,9 +87,7 @@ function main(word) {
     var style = document.createElement("style");
     style.innerHTML = cssStyles;
     document.head.appendChild(style);
-    ;
     
-    // Create an array to store the guessed letters
     var guessedLetters = [];
     var incorrectGuesses = 0;
     // Update the word display
@@ -116,7 +102,6 @@ function main(word) {
         }
         wordDisplay.innerHTML = displayWord;
     }
-    
     
     
     // Update the guesses display
@@ -140,7 +125,7 @@ function main(word) {
     }
     
     function resetGame() {
-        fetch('example.com/words.txt')
+        fetch('https://elias0419.github.io/html/words.txt')
         .then(response => response.text())
         .then(wordsText => {
             // Split the text into an array of words
@@ -148,7 +133,6 @@ function main(word) {
             // Choose a new random word from the array
             word = words[Math.floor(Math.random() * words.length)].trim();
         })
-        imageContainer.style.backgroundImage = "url('http://example.com/hangman1.jpg'); // reset background image
         guessedLetters = [];
         incorrectGuesses = 0;
         updateWordDisplay();
@@ -168,8 +152,6 @@ function main(word) {
                 guessedLetters.push(letter);
                 if (!word.includes(letter)) {
                     incorrectGuesses++;
-                    var imageUrl = "hangman" + (incorrectGuesses + 1) + ".jpg"; // concatenate incorrect guesses into URL string
-                    imageContainer.style.backgroundImage = "url(" + imageUrl + ")"; 
                 }
                 updateWordDisplay();
                 updateGuessesDisplay();
