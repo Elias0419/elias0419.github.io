@@ -4,8 +4,10 @@ window.addEventListener('load', function() {
 function main(){
 const gameContainer = document.createElement('div');
 const canvas = document.createElement('canvas');
+
+   if(!isMobile){ 
 canvas.width = 400;
-canvas.height = 400;
+canvas.height = 400;}
 canvas.id = "canvas";
 canvas.tabIndex = 0;
 gameContainer.id = 'game-container';
@@ -13,6 +15,8 @@ gameContainer.appendChild(canvas);
 document.body.appendChild(gameContainer);
 const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 if (isMobile){
+    canvas.width = window.innerWidth * 0.8;;
+canvas.height = window.innerHeight * 0.8;
 const buttonDiv = document.createElement('div');
 document.body.appendChild(buttonDiv)
 //const buttonDiv = document.querySelector('#game-container');
