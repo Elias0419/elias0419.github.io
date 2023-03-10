@@ -18,8 +18,8 @@ canvas.height = 400;}
     const snakeSize = 10;
     const foodSize = 10;
 if (isMobile){
-    const snakeSize = 30;
-    const foodSize = 30;
+    const snakeSize = 60;
+    const foodSize = 60;
     canvas.width = window.innerWidth * 0.8;;
 canvas.height = window.innerHeight * 0.4;
 const buttonDiv = document.createElement('div');
