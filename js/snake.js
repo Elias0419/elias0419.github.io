@@ -213,7 +213,7 @@ function checkFoodCollision() {
 
 let updateInterval = setInterval(() => {
   update();
-}, isMobile ? 50 : 100);
+}, isMobile ? 75 : 100);
 
 function gameOver() {
   console.log("game over")
