@@ -35,7 +35,7 @@ const upButton = document.createElement('button');
 upButton.textContent = '↑';
 upButton.style.width = '150px';
 upButton.style.height = '150px';
-upButton.style.fontSize = '32px';
+upButton.style.fontSize = '44px';
     upButton.style.fontWeight = '900'
 upButton.style.margin = '10px';
 
@@ -43,7 +43,7 @@ const downButton = document.createElement('button');
 downButton.textContent = '↓';
 downButton.style.width = '150px';
 downButton.style.height = '150px';
-downButton.style.fontSize = '32px';
+downButton.style.fontSize = '44px';
     downButton.style.fontWeight = '900'
 downButton.style.margin = '10px';
 
@@ -51,7 +51,7 @@ const leftButton = document.createElement('button');
 leftButton.textContent = '←';
 leftButton.style.width = '150px';
 leftButton.style.height = '150px';
-leftButton.style.fontSize = '32px';
+leftButton.style.fontSize = '44px';
     leftButton.style.fontWeight = '900'
 leftButton.style.margin = '10px';
 
@@ -59,7 +59,7 @@ const rightButton = document.createElement('button');
 rightButton.textContent = '→';
 rightButton.style.width = '150px';
 rightButton.style.height = '150px';
-rightButton.style.fontSize = '32px';
+rightButton.style.fontSize = '44px';
     rightButton.style.fontWeight = '900'
 rightButton.style.margin = '10px';
     
@@ -213,7 +213,7 @@ function checkFoodCollision() {
 
 let updateInterval = setInterval(() => {
   update();
-}, 100);
+}, isMobile ? 50 : 100);
 
 function gameOver() {
   console.log("game over")
