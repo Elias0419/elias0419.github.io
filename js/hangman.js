@@ -13,7 +13,6 @@ window.addEventListener('load', function() {
 
 function main(word) {
     // Create the word display element
-    // Create the word display element with placeholder text
     var wordDisplay = document.createElement("div");
     wordDisplay.id = "word";
     wordDisplay.style.fontSize = "36px";
