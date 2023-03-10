@@ -11,35 +11,36 @@ canvas.tabIndex = 0;
 gameContainer.id = 'game-container';
 gameContainer.appendChild(canvas);
 document.body.appendChild(gameContainer);
-
+const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+if (isMobile){
 const buttonDiv = document.createElement('div');
 document.body.appendChild(buttonDiv)
 //const buttonDiv = document.querySelector('#game-container');
 const upButton = document.createElement('button');
 upButton.textContent = '↑';
-upButton.style.width = '80px';
-upButton.style.height = '80px';
+upButton.style.width = '150px';
+upButton.style.height = '150px';
 upButton.style.fontSize = '24px';
 upButton.style.margin = '10px';
 
 const downButton = document.createElement('button');
 downButton.textContent = '↓';
-downButton.style.width = '80px';
-downButton.style.height = '80px';
+downButton.style.width = '150px';
+downButton.style.height = '150px';
 downButton.style.fontSize = '24px';
 downButton.style.margin = '10px';
 
 const leftButton = document.createElement('button');
 leftButton.textContent = '←';
-leftButton.style.width = '80px';
-leftButton.style.height = '80px';
+leftButton.style.width = '150px';
+leftButton.style.height = '150px';
 leftButton.style.fontSize = '24px';
 leftButton.style.margin = '10px';
 
 const rightButton = document.createElement('button');
 rightButton.textContent = '→';
-rightButton.style.width = '80px';
-rightButton.style.height = '80px';
+rightButton.style.width = '150px';
+rightButton.style.height = '150px';
 rightButton.style.fontSize = '24px';
 rightButton.style.margin = '10px';
     buttonDiv.appendChild(upButton);
@@ -53,6 +54,27 @@ buttonDiv.style.alignItems = 'center';
 buttonDiv.style.position = 'absolute';
 buttonDiv.style.bottom = '0';
 buttonDiv.style.width = '100%';
+
+    upButton.addEventListener('click', function() {
+  dx = 0;
+  dy = -10;
+});
+
+downButton.addEventListener('click', function() {
+  dx = 0;
+  dy = 10;
+});
+
+leftButton.addEventListener('click', function() {
+  dx = -10;
+  dy = 0;
+});
+
+rightButton.addEventListener('click', function() {
+  dx = 10;
+  dy = 0;
+});
+}
 
 const style = document.createElement('style');
 style.innerHTML = `
@@ -82,26 +104,6 @@ const snakeSize = 10;
 let snakeLength = 3;
 
 let snake = [  { x: 50, y: 50 },  { x: 40, y: 50 },  { x: 30, y: 50 },];
-
-    upButton.addEventListener('click', function() {
-  dx = 0;
-  dy = -10;
-});
-
-downButton.addEventListener('click', function() {
-  dx = 0;
-  dy = 10;
-});
-
-leftButton.addEventListener('click', function() {
-  dx = -10;
-  dy = 0;
-});
-
-rightButton.addEventListener('click', function() {
-  dx = 10;
-  dy = 0;
-});
 
 const KEY_LEFT = 37;
 const KEY_UP = 38;
@@ -256,4 +258,3 @@ function update() {
 }
 
 }
-
