@@ -15,9 +15,13 @@ const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/
       if(!isMobile){ 
 canvas.width = 400;
 canvas.height = 400;}
+    const snakeSize = 10;
+    const foodSize = 10;
 if (isMobile){
+    const snakeSize = 30;
+    const foodSize = 30;
     canvas.width = window.innerWidth * 0.8;;
-canvas.height = window.innerHeight * 0.8;
+canvas.height = window.innerHeight * 0.4;
 const buttonDiv = document.createElement('div');
 document.body.appendChild(buttonDiv)
 //const buttonDiv = document.querySelector('#game-container');
@@ -105,7 +109,7 @@ style.innerHTML = `
 `;
 document.head.appendChild(style);
 
-const snakeSize = 10;
+
 let snakeLength = 3;
 
 let snake = [  { x: 50, y: 50 },  { x: 40, y: 50 },  { x: 30, y: 50 },];
@@ -166,7 +170,7 @@ function checkCollision() {
 }
 
 let food = { x: 0, y: 0 };
-const foodSize = 10;
+
 
 // Draw the food block
 function drawFood() {
