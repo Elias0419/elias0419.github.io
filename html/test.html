@@ -4,6 +4,7 @@
         class FlyingCanvas {
             constructor(canvas_id, side_length) {
                 this.canvas = document.getElementById(canvas_id);
+                this.ctx = this.canvas.getContext('2d');
                 this.canvas.addEventListener('click', this.dropBox, false);
 
                 this.acceleration = 10;
