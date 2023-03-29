@@ -27,7 +27,7 @@
                 this.ctx.fillRect(this.box_x, this.box_y, this.side_length, this.side_length);
             }
 
-            dropBox = (timestamp) => {
+             dropBox = (timestamp) => {
                 if (this.box_y + this.side_length > this.canvas.height) { return; }
 
                 let seconds = (timestamp) / 1000 - 1;
@@ -40,6 +40,8 @@
                 this.box_y = this.start_y + .5 * this.y_acceleration * seconds**2;
                 this.x_speed = Math.max(0, this.x_speed + this.x_acceleration * seconds_passed);
                 this.box_x += this.x_speed * seconds_passed;
+
+                this.side_length += this.side_length/100;
 
                 window.requestAnimationFrame(this.dropBox);
             }
