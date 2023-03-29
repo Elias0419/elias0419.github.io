@@ -1,0 +1,39 @@
+<body>
+    <canvas id="flying_canvas" width="800" height="800"></canvas>
+    <script>
+        class FlyingCanvas {
+            constructor(canvas_id, side_length) {
+                this.canvas = document.getElementById(canvas_id);
+                this.canvas.addEventListener('click', this.dropBox, false);
+
+                this.acceleration = 10;
+                this.side_length = side_length;
+                this.box_y = this.canvas.height * 0;
+                this.box_x = (this.canvas.width - this.side_length) / 2;
+
+                this.draw();
+            }
+
+            draw = () => {
+                this.ctx.fillStyle = "LightSkyBlue";
+                this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+
+                this.ctx.fillStyle = 'purple';
+                this.ctx.fillRect(this.box_x, this.box_y, this.side_length, this.side_length);
+            }
+
+            dropBox = (timestamp) => {
+                if (this.box_y + this.side_length > this.canvas.height) { return; }
+
+                isNaN(timestamp) ? timestamp = 0 : timestamp = timestamp - 1;
+                this.box_y = .5 * this.acceleration * (timestamp / 1000)**2 * this.pixels_per_meter;
+
+                this.draw();
+
+                window.requestAnimationFrame(this.dropBox);
+            }
+        }
+
+        fc = new FlyingCanvas('flying_canvas', 50);
+    </script>
+</body>
