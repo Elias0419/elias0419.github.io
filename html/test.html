@@ -7,7 +7,7 @@
             this.canvas = document.getElementById(this.canvas_id);
             this.ball_x = this.ball_y = this.ball_radius;
 
-            window.requestAnimationFrame(this.draw);
+            window.requestAnimationFrame(() => this.draw());
         }
 
         checkForBounce = () => {
