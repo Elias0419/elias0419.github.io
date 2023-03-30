@@ -1,55 +1,47 @@
 <body>
-    <canvas id="flying_canvas" width="800" height="800"></canvas>
+    <canvas id="bouncing_canvas" width="800" height="800"></canvas>
     <script>
-          class FlyingCanvas {
-            constructor(canvas_id, side_length) {
-                this.canvas = document.getElementById(canvas_id);
-                this.canvas.addEventListener('click', this.dropBox, false);
-                this.ctx = this.canvas.getContext("2d");
+    class BouncingCanvas {
+        constructor(args) {
+            Object.assign(this, args);
+            this.canvas = document.getElementById(this.canvas_id);
+            this.ball_x = this.ball_y = this.ball_radius;
 
-                this.last_time_stamp = 0;
-                this.x_speed = 400;
-                this.x_acceleration = -200;
-                this.y_acceleration = 600;
+            window.requestAnimationFrame(this.draw);
+        }
 
-                this.side_length = side_length;
-                this.size_increase = side_length * .08;
-
-                this.box_y = this.start_y = this.canvas.height * 0;
-                this.box_x = this.start_x = (this.canvas.width - this.side_length) / 2;
-
-                this.draw();
+        checkForBounce = () => {
+            if (this.ball_x + this.ball_radius >= this.canvas.width || this.ball_x - this.ball_radius <= 0) {
+                this.x_movement_rate = this.x_movement_rate * -1;
             }
 
-            draw = () => {
-                this.ctx.fillStyle = "LightSkyBlue";
-                this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
-
-                this.ctx.fillStyle = 'purple';
-                this.ctx.fillRect(this.box_x, this.box_y, this.side_length, this.side_length);
-            }
-
-            dropBox = (timestamp) => {
-                if (this.box_y + this.side_length > this.canvas.height) { return; }
-
-                let seconds = (timestamp) / 1000 - 1;
-                if (isNaN(seconds)) { seconds = 0 };
-                let seconds_passed = seconds - this.last_time_stamp;
-                this.last_time_stamp = seconds;
-
-                this.draw();
-
-                this.box_y = this.start_y + .5 * this.y_acceleration * seconds**2;
-                this.x_speed = Math.max(0, this.x_speed + this.x_acceleration * seconds_passed);
-                this.box_x += this.x_speed * seconds_passed;
-
-                this.side_length += this.size_increase;
-                this.size_increase *= .95;
-
-                window.requestAnimationFrame(this.dropBox);
+            if (this.ball_y + this.ball_radius >= this.canvas.height || this.ball_y - this.ball_radius <= 0) {
+                this.y_movement_rate = this.y_movement_rate * -1;
             }
         }
 
-        fc = new FlyingCanvas('flying_canvas', 50);
-    </script>
+        draw = () => {
+            let ctx = this.canvas.getContext("2d");
+
+            ctx.fillStyle = "blue";
+            ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+
+            ctx.fillStyle = "green";
+            ctx.translate(this.x_movement_rate, this.y_movement_rate);
+
+            ctx.beginPath();
+            ctx.arc(this.ball_radius, this.ball_radius, this.ball_radius, 0, 2 * Math.PI);
+            ctx.fill();
+
+            this.ball_x += this.x_movement_rate;
+            this.ball_y += this.y_movement_rate;
+
+            this.checkForBounce();
+
+            window.requestAnimationFrame(this.draw);
+        }
+    }
+
+    bc = new BouncingCanvas({'canvas_id': 'animation_canvas', 'ball_radius': 50, 'x_movement_rate': 4, 'y_movement_rate': 3});
+  </script>
 </body>
