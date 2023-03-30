@@ -1,45 +1,47 @@
 <body>
     <canvas id="animation_canvas" width="800" height="800"></canvas>
     <script>
-    const ball_radius = 50;
-    const canvas_width = canvas_height = 600;
+    class BouncingCanvas {
+        constructor(args) {
+            Object.assign(this, args);
+            this.ball_x = this.ball_y = this.ball_radius;
 
-    let ball_x = ball_y = ball_radius;
-    let x_movement_rate = 3; // number of pixels moved right per frame
-    let y_movement_rate = 1; // number of pixels moved down per frame
-    
-    function checkForBounce() {
-        if (ball_x + ball_radius >= canvas_width || ball_x - ball_radius <= 0) {
-            x_movement_rate = x_movement_rate * -1;
+            window.requestAnimationFrame(this.draw);
         }
 
-        if (ball_y + ball_radius >= canvas_height || ball_y - ball_radius <= 0) {
-            y_movement_rate = y_movement_rate * -1;
+        checkForBounce = () => {
+            if (this.ball_x + this.ball_radius >= this.canvas_width || this.ball_x - this.ball_radius <= 0) {
+                this.x_movement_rate = this.x_movement_rate * -1;
+            }
+
+            if (this.ball_y + this.ball_radius >= this.canvas_height || this.ball_y - this.ball_radius <= 0) {
+                this.y_movement_rate = this.y_movement_rate * -1;
+            }
+        }
+
+        draw = () => {
+            let canvas = document.getElementById(this.canvas_id);
+            let ctx = canvas.getContext("2d");
+
+            ctx.fillStyle = "blue";
+            ctx.fillRect(0, 0, this.canvas_width, this.canvas_height);
+
+            ctx.fillStyle = "purple";
+            ctx.translate(this.x_movement_rate, this.y_movement_rate);
+
+            ctx.beginPath();
+            ctx.arc(this.ball_radius, this.ball_radius, this.ball_radius, 0, 2 * Math.PI);
+            ctx.fill();
+
+            this.ball_x += this.x_movement_rate;
+            this.ball_y += this.y_movement_rate;
+
+            this.checkForBounce();
+
+            window.requestAnimationFrame(this.draw);
         }
     }
 
-    function draw() {
-        let canvas = document.getElementById("animation_canvas");
-        let ctx = canvas.getContext("2d");
-
-        ctx.fillStyle = "blue";
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-        ctx.fillStyle = "purple";
-        ctx.translate(x_movement_rate, y_movement_rate);
-
-        ctx.beginPath();
-        ctx.arc(ball_radius, ball_radius, ball_radius, 0, 2 * Math.PI);
-        ctx.fill();
-
-        ball_x += x_movement_rate;
-        ball_y += y_movement_rate;
-
-        checkForBounce();
-
-        window.requestAnimationFrame(draw);
-    }
-
-    window.requestAnimationFrame(draw);
+    bc = new BouncingCanvas({'canvas_id': 'animation_canvas', 'ball_radius': 50, 'canvas_width': 600, 'canvas_height': 600, 'x_movement_rate': 3, 'y_movement_rate': 1});
   </script>
 </body>
