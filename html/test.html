@@ -1,6 +1,6 @@
 <body>
     <canvas id="animation_canvas" width="800" height="800"></canvas>
-     <script>
+  <script>
     class BouncingCanvas {
         constructor(args) {
             Object.assign(this, args);
@@ -13,15 +13,25 @@
             this.paddle_height = 40;
             this.paddle_x = this.paddle_width / 2;
 
+            this.gameOver = false;
+
             window.requestAnimationFrame(this.draw);
         }
 
         checkForBounce = () => {
+            let hasHitBottom = (this.ball_y + this.ball_radius >= this.canvas.height - this.paddle_height);
+            let paddleLeftEdge = this.paddle_x - this.paddle_width/2;
+            let paddleRightEdge = this.paddle_x + this.paddle_width/2;
+            
+            if (hasHitBottom && (this.ball_x < paddleLeftEdge || this.ball_x > paddleRightEdge)) {
+                this.gameOver = true;
+            }
+
             if (this.ball_x + this.ball_radius >= this.canvas.width || this.ball_x - this.ball_radius <= 0) {
                 this.x_movement_rate = this.x_movement_rate * -1;
             }
 
-            if (this.ball_y + this.ball_radius >= this.canvas.height - this.paddle_height || this.ball_y - this.ball_radius <= 0) {
+            if (hasHitBottom || this.ball_y - this.ball_radius <= 0) {
                 this.y_movement_rate = this.y_movement_rate * -1;
             }
         }
@@ -45,9 +55,13 @@
 
             ctx.beginPath();
             ctx.moveTo(0, 0);
-            ctx.fillStyle = "green";
+            ctx.fillStyle = this.gameOver ? "red" : "green";
             ctx.arc(this.ball_x, this.ball_y, this.ball_radius, 0, 2 * Math.PI);
             ctx.fill();
+
+            if (this.gameOver) {
+                return;
+            }
 
             this.checkForBounce();
 
