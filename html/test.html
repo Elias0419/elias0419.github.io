@@ -17,6 +17,28 @@
 
             window.requestAnimationFrame(this.draw);
         }
+            drawGameOver = (ctx) => {
+            const endScreenHeight = 100;
+            const endScreenWidth = 350;
+            const endScreenX = (this.canvas.width - endScreenWidth)/2;
+            const endScreenY = (this.canvas.height - endScreenHeight)/2;
+            const fontSize = 50;
+
+            ctx.save();
+
+            ctx.beginPath();
+            ctx.moveTo(0, 0);
+            ctx.fillStyle = 'black';
+            ctx.fillRect(endScreenX, endScreenY, endScreenWidth, endScreenHeight);
+            
+            ctx.beginPath();
+            ctx.moveTo((endScreenWidth/6), fontSize);
+            ctx.fillStyle = 'red';
+            ctx.font = fontSize + 'px serif';
+            ctx.fillText('Game Over!', endScreenX + (endScreenWidth)/6, endScreenY + fontSize*4/3);
+
+            ctx.restore();
+        }
 
         checkForBounce = () => {
             let hasHitBottom = (this.ball_y + this.ball_radius >= this.canvas.height - this.paddle_height);
@@ -60,6 +82,7 @@
             ctx.fill();
 
             if (this.gameOver) {
+                  this.drawGameOver(ctx);
                 return;
             }
 
