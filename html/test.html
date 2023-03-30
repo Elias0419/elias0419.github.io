@@ -4,10 +4,14 @@
     class BouncingCanvas {
         constructor(args) {
             Object.assign(this, args);
+            let canvas = document.getElementById(this.canvas_id);
+            this.canvas_width = canvas.width;
+            this.canvas_height = canvas.height;
             this.ball_x = this.ball_y = this.ball_radius;
 
             window.requestAnimationFrame(this.draw);
         }
+
 
         checkForBounce = () => {
             if (this.ball_x + this.ball_radius >= this.canvas_width || this.ball_x - this.ball_radius <= 0) {
@@ -42,6 +46,5 @@
         }
     }
 
-    bc = new BouncingCanvas({'canvas_id': 'animation_canvas', 'ball_radius': 50, 'canvas_width': 600, 'canvas_height': 600, 'x_movement_rate': 3, 'y_movement_rate': 1});
-  </script>
+bc = new BouncingCanvas({'canvas_id': 'animation_canvas', 'ball_radius': 50, 'x_movement_rate': 3, 'y_movement_rate': 1});  </script>
 </body>
