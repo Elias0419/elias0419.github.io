@@ -1,50 +1,29 @@
-<body>
-    <canvas id="animation_canvas" width="800" height="800"></canvas>
-    <script>
-    class BouncingCanvas {
-        constructor(args) {
-            Object.assign(this, args);
-            let canvas = document.getElementById(this.canvas_id);
-            this.canvas_width = canvas.width;
-            this.canvas_height = canvas.height;
-            this.ball_x = this.ball_y = this.ball_radius;
+<html><head>
+ <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
+    
+    <!-- jQuery UI -->
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    </head><body>
 
-            window.requestAnimationFrame(this.draw);
+<div id="dialog-modal" title="Hello!">
+  <p>I'm an AI Assistant!</p>
+</div>
+
+<button id="open-modal">Open Modal</button>
+
+<script src="jquery-3.6.0.js"></script>
+<script src="jquery-ui-1.13.2/jquery-ui.js"></script>
+<script>
+  $("#open-modal").on("click", function() {
+    $("#dialog-modal").dialog({
+      modal: true,
+      buttons: {
+        Ok: function() {
+          $(this).dialog("close");
         }
-
-
-        checkForBounce = () => {
-            if (this.ball_x + this.ball_radius >= this.canvas_width || this.ball_x - this.ball_radius <= 0) {
-                this.x_movement_rate = this.x_movement_rate * -1;
-            }
-
-            if (this.ball_y + this.ball_radius >= this.canvas_height || this.ball_y - this.ball_radius <= 0) {
-                this.y_movement_rate = this.y_movement_rate * -1;
-            }
-        }
-
-        draw = () => {
-            let canvas = document.getElementById(this.canvas_id);
-            let ctx = canvas.getContext("2d");
-
-            ctx.fillStyle = "blue";
-            ctx.fillRect(0, 0, this.canvas_width, this.canvas_height);
-
-            ctx.fillStyle = "purple";
-            ctx.translate(this.x_movement_rate, this.y_movement_rate);
-
-            ctx.beginPath();
-            ctx.arc(this.ball_radius, this.ball_radius, this.ball_radius, 0, 2 * Math.PI);
-            ctx.fill();
-
-            this.ball_x += this.x_movement_rate;
-            this.ball_y += this.y_movement_rate;
-
-            this.checkForBounce();
-
-            window.requestAnimationFrame(this.draw);
-        }
-    }
-
-bc = new BouncingCanvas({'canvas_id': 'animation_canvas', 'ball_radius': 50, 'x_movement_rate': 3, 'y_movement_rate': 1});  </script>
-</body>
+      }
+    });
+  });
+</script>
+    </body>
