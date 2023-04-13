@@ -1,29 +1,51 @@
-<html><head>
- <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
-    
-    <!-- jQuery UI -->
-    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-    </head><body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Display</title>
+</head>
+<body>
+    <canvas id="weatherCanvas" width="400" height="300"></canvas>
+    <script>
+        const canvas = document.getElementById('weatherCanvas');
+        const ctx = canvas.getContext('2d');
 
-<div id="dialog-modal" title="Hello!">
-  <p>I'm an AI Assistant!</p>
-</div>
+        const apiKey = '661dc5112d354de6a3b03118230403';
+        const url = `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=New%20York&aqi=no`;
 
-<button id="open-modal">Open Modal</button>
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                const temperature = data.current.temp_f;
+                const condition = data.current.condition.text;
+                const city = data.location.name;
+                const precipitation = data.current.precip_in;
 
-<script src="jquery-3.6.0.js"></script>
-<script src="jquery-ui-1.13.2/jquery-ui.js"></script>
-<script>
-  $("#open-modal").on("click", function() {
-    $("#dialog-modal").dialog({
-      modal: true,
-      buttons: {
-        Ok: function() {
-          $(this).dialog("close");
-        }
-      }
-    });
-  });
-</script>
-    </body>
+                const backgroundImages = {
+                    // Add your own background images here, e.g.
+                    // "partly cloudy": "path/to/partly_cloudy.png",
+                     "default": "https://media.istockphoto.com/id/1007768414/photo/blue-sky-with-bright-sun-and-clouds.jpg"
+                };
+
+                const conditionLower = condition.toLowerCase();
+                const backgroundImage = backgroundImages[conditionLower] || backgroundImages["default"];
+
+                const img = new Image();
+                img.src = backgroundImage;
+                img.onload = () => {
+                    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+                    ctx.fillStyle = 'white';
+                    ctx.font = '24px Calibri';
+                    ctx.fillText(`City: ${city}`, 20, 40);
+                    ctx.fillText(`Conditions: ${condition}`, 20, 70);
+                    ctx.fillText(`Temperature: ${temperature}°F`, 20, 100);
+                    ctx.fillText(`Precipitation: ${precipitation} in`, 20, 130);
+                };
+            })
+            .catch(error => console.error('Error fetching weather data:', error));
+    </script>
+</body>
+</html>
