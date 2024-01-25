@@ -164,10 +164,9 @@ document.addEventListener('keydown', (event) => {
 
 function drawSnake() {
   const ctx = canvas.getContext('2d');
-  ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
+  ctx.clearRect(0, 0, canvas.width, canvas.height); 
   ctx.fillStyle = 'green';
 
-  // Draw the snake at its new position
   for (let i = 0; i < snake.length; i++) {
     ctx.fillRect(snake[i].x, snake[i].y, snakeSize, snakeSize);
   }
@@ -185,25 +184,21 @@ function checkCollision() {
 let food = { x: 0, y: 0 };
 
 
-// Draw the food block
 function drawFood() {
   const ctx = canvas.getContext('2d');
   ctx.fillStyle = 'brown';
   ctx.fillRect(food.x, food.y, foodSize, foodSize);
 }
 
-// Spawn the food block at a random position
 function spawnFood() {
   food.x = Math.floor(Math.random() * (canvas.width / foodSize)) * foodSize;
   food.y = Math.floor(Math.random() * (canvas.height / foodSize)) * foodSize;
 }
 
-// Call spawnFood every few seconds
 setInterval(() => {
   spawnFood();
 }, 5000);
 
-// Check for collision between the snake's head and the food block
 function checkFoodCollision() {
   if (snake[0].x === food.x && snake[0].y === food.y) {
     snakeLength++;
@@ -235,15 +230,12 @@ function restartGame() {
   snakeLength = 3;
 
 
-  // Restart the game loop
   updateInterval = setInterval(update, 100);
 }
 
 function update() {
-  // Get the new position of the snake's head based on the direction
   let head = { x: snake[0].x + dx, y: snake[0].y + dy };
 
-  // Wrap the snake around the screen
   if (head.x < 0) {
     head.x = canvas.width - snakeSize;
   } else if (head.x >= canvas.width) {
@@ -266,15 +258,12 @@ function update() {
     gameOver();
   }
 
-  // Add the new head to the start of the snake array
   snake.unshift(head);
 
-  // Remove the tail of the snake if its length exceeds `snakeLength`
   if (snake.length > snakeLength) {
     snake.pop();
   }
 
-  // Draw the snake at its new position
   drawSnake();
   drawFood();
 }
