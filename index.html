@@ -1,13 +1,182 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <script defer src="https://elias0419.github.io/js/snake.js"></script>
-  </head>
-  <body>
-    <div id="bodyDiv">
-     <script>
-      
-    </script>
+<head>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+
+    body {
+      font-family: 'Staatliches', sans-serif;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #1a1a1a;
+      color: #e0e0e0;
+    }
+
+    .menu-container {
+      background-color: #2b2b2b;
+      padding: 40px;
+      border-radius: 12px;
+      border: 2px solid #ff0055;
+      position: relative;
+    }
+
+    h1 {
+      text-align: center;
+      color: #ff0055;
+      font-size: 3em;
+      margin-bottom: 40px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      position: relative;
+    }
+
+    h1::after {
+      content: '';
+      width: 100px;
+      height: 4px;
+      background: #ff0055;
+      display: block;
+      margin: 20px auto 0;
+    }
+
+    .menu-item {
+      margin-bottom: 30px;
+    }
+
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+      border-bottom: 1px dashed #ff0055;
+      padding-bottom: 5px;
+    }
+
+    .item-name {
+      font-size: 1.8em;
+      color: #e0e0e0;
+      text-transform: uppercase;
+    }
+
+    .price {
+      font-size: 1.6em;
+      color: #ff0055;
+    }
+
+    .description {
+      color: #b3b3b3;
+      font-size: 1.1em;
+      line-height: 1.6;
+      margin-top: 10px;
+    }
+
+    .extras {
+      margin-top: 50px;
+      padding-top: 20px;
+      border-top: 1px dashed #ff0055;
+      font-size: 1.2em;
+      color: #b3b3b3;
+    }
+
+    .extras div {
+      margin-bottom: 15px;
+    }
+
+    .social {
+      text-align: center;
+      margin-top: 50px;
+      color: #e0e0e0;
+      font-size: 1.2em;
+    }
+
+    .social a {
+      color: #ff0055;
+      text-decoration: none;
+    }
+
+    .social a:hover {
+      text-decoration: underline;
+    }
+
+    /* Punky decorations */
+    .menu-container::before,
+    .menu-container::after {
+      content: '';
+      position: absolute;
+      width: 100px;
+      height: 100px;
+/*       background: url('https://i.imgur.com/z6f1mQF.png') no-repeat center center; */
+      background-size: contain;
+      opacity: 0.2;
+    }
+
+    .menu-container::before {
+      top: -20px;
+      left: -20px;
+    }
+
+    .menu-container::after {
+      bottom: -20px;
+      right: -20px;
+      transform: rotate(180deg);
+    }
+  </style>
+</head>
+<body>
+  <div class="menu-container">
+    <h1>Rebel's Rations JJ's Café</h1>
+
+    <div class="menu-item">
+      <div class="item-header">
+        <span class="item-name">The Revolt</span>
+        <span class="price">$12</span>
+      </div>
+      <div class="description">
+        Smash Burger with Rebel Sauce, Cheese, and Arugula.
+      </div>
     </div>
-  </body>
+
+    <div class="menu-item">
+      <div class="item-header">
+        <span class="item-name">The Marauder</span>
+        <span class="price">$14</span>
+      </div>
+      <div class="description">
+        Spiced-up Double Smash Burgers with Hot Pepper Relish, Gorgonzola Crema, and Arugula.
+      </div>
+    </div>
+
+    <div class="menu-item">
+      <div class="item-header">
+        <span class="item-name">The Nether</span>
+        <span class="price">$14</span>
+      </div>
+      <div class="description">
+        Double Smash Burger with Crispy Sauce, Seasoned Broccoli 'n' Bacon, and Arugula.
+      </div>
+    </div>
+
+    <div class="menu-item">
+      <div class="item-header">
+        <span class="item-name">Bahamut Zero</span>
+        <span class="price">$10</span>
+      </div>
+      <div class="description">
+        Damn Big Hot Dog on a Hoagie Roll with Secret Sauce.
+      </div>
+    </div>
+
+    <div class="extras">
+      <div>Bag O' Chips <span class="price">$1</span></div>
+      <div>Ring Pop <span class="price">$1</span></div>
+      <div>Add Bacon <span class="price">+$2</span></div>
+      <div style="margin-top: 15px;">Veggie Burger Available...</div>
+    </div>
+
+    <div class="social">
+      Follow Us On Instagram: <a href="https://instagram.com/Rebels_Rations">@Rebels_Rations</a>
+    </div>
+  </div>
+</body>
 </html>
